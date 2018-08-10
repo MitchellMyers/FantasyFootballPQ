@@ -26,7 +26,9 @@ public class FantasyPQ {
     private Hashtable<String, RankFreq> getPlayerRankingHashtable(File[] rankingFiles) {
         Hashtable<String, RankFreq> rankingMasterTable = new Hashtable<>();
         for (File rankingFile: rankingFiles) {
-            parseRankingFile(rankingFile, rankingMasterTable);
+            if (!rankingFile.getName().equals("WeightedPlayerPriorities.csv")) {
+                parseRankingFile(rankingFile, rankingMasterTable);
+            }
         }
         return rankingMasterTable;
     }
@@ -80,10 +82,10 @@ public class FantasyPQ {
     }
 
     private void writePriorityQueueToFile(PriorityQueue<Player> playerPriorityQueue, String filePath) {
-        File weightedPriorityFile = new File(filePath + "WeightedPlayerPriorities.csv");
+        File weightedPriorityFile = new File(filePath + "/WeightedPlayerPriorities.csv");
         FileWriter fileWriter;
         try {
-            fileWriter = new FileWriter(weightedPriorityFile);
+            fileWriter = new FileWriter(weightedPriorityFile, false);
         } catch (IOException e) {
             e.printStackTrace();
             return;

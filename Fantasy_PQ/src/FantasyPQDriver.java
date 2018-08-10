@@ -16,10 +16,9 @@ public class FantasyPQDriver {
             }
         }
         String filePath = sb.toString();
-        System.out.println(filePath);
         FantasyPQ fantasyPriorityQueue = new FantasyPQ();
         fantasyPriorityQueue.writePriorityFile(filePath);
-
+        System.out.println("Done!");
     }
 
 
