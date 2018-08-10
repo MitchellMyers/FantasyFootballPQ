@@ -16,7 +16,7 @@ public class FantasyPQ {
         File[] rankingsFiles = getRankingFiles(filePath);
         Hashtable<String, RankFreq> rankingMasterTable = getPlayerRankingHashtable(rankingsFiles);
         PriorityQueue<Player> playerPriorityQueue = getPlayerPriorityQueue(rankingMasterTable);
-        writePriorityQueueToFile(playerPriorityQueue);
+        writePriorityQueueToFile(playerPriorityQueue, filePath);
     }
 
     private File[] getRankingFiles(String filePath) {
@@ -79,8 +79,8 @@ public class FantasyPQ {
         return playerPriorityQueue;
     }
 
-    private void writePriorityQueueToFile(PriorityQueue<Player> playerPriorityQueue) {
-        File weightedPriorityFile = new File("/Users/Mitch/Google Drive/CS/Side_Projects/Fantasy_PQ/WeightedPlayerPriorities.csv");
+    private void writePriorityQueueToFile(PriorityQueue<Player> playerPriorityQueue, String filePath) {
+        File weightedPriorityFile = new File(filePath + "WeightedPlayerPriorities.csv");
         FileWriter fileWriter;
         try {
             fileWriter = new FileWriter(weightedPriorityFile);
